@@ -37,6 +37,8 @@ export function App() {
     setSelectedRestaurant(restaurant);
   }
 
+  var currentMenuItems = data.filter((menuItem) => menuItem.food_category === selectedCategory && menuItem.restaurant === selectedRestaurant);
+
   return (
     <main className="App">
       {/* CATEGORIES COLUMN */}
