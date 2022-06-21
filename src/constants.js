@@ -11,16 +11,16 @@ export const appInfo = {
     noSelectedItem: `Almost there! Choose a menu item and you'll have the fast food facts right at your fingertips!`,
     allSelected: `Great choice! Amazing what a little knowledge can do!`,
   },
-}
+};
 // or this!
 export const nutritionFacts = [
   { id: 1, label: "Description", attribute: "item_description" },
   { id: 2, label: "Calories", attribute: "calories" },
   { id: 3, label: "Cholesterol", attribute: "cholesterol" },
-  { id: 4, label: "Fiber", attribute: "fiber" },
+  { id: 4, label: "Fiber", attribute: "dietary_fiber" },
   { id: 5, label: "Sodium", attribute: "sodium" },
   { id: 6, label: "Sugar", attribute: "sugar" },
   { id: 7, label: "Total Fat", attribute: "total_fat" },
   { id: 8, label: "Saturated Fat", attribute: "saturated_fat" },
   { id: 9, label: "Trans Fat", attribute: "trans_fat" },
-]
+];

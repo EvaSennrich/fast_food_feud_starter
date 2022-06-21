@@ -6,7 +6,7 @@ import Header from "./components/Header/Header.jsx";
 import Instructions from "./components/Instructions/Instructions";
 import Chip from "./components/Chip/Chip";
 import { useState } from "react";
-useState;
+import NutritionalLabel from "./components/NutritionalLabel/NutritionalLabel";
 
 // don't move this!
 export const appInfo = {
@@ -28,6 +28,7 @@ const { data, categories, restaurants } = createDataSet();
 export function App() {
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [selectedRestaurant, setSelectedRestaurant] = useState(0);
+  const [selectedMenuItem, setSelectedMenuItem] = useState(0);
 
   function handleEvent(category) {
     setSelectedCategory(category);
@@ -37,8 +38,12 @@ export function App() {
     setSelectedRestaurant(restaurant);
   }
 
-  var currentMenuItems = data.filter((menuItem) => menuItem.food_category === selectedCategory && menuItem.restaurant === selectedRestaurant);
+  function handleSelectedMenuItem(item) {
+    setSelectedMenuItem(item);
+  }
 
+  var currentMenuItems = data.filter((menuItem) => menuItem.food_category === selectedCategory && menuItem.restaurant === selectedRestaurant);
+  console.log("poop", currentMenuItems);
   return (
     <main className="App">
       {/* CATEGORIES COLUMN */}
@@ -73,11 +78,13 @@ export function App() {
         <div className="MenuDisplay display">
           <div className="MenuItemButtons menu-items">
             <h2 className="title">Menu Items</h2>
-            {/* YOUR CODE HERE */}
+            {currentMenuItems.map((item) => (
+              <Chip handleClick={() => handleSelectedMenuItem(item)} label={item.item_name} isActive={selectedMenuItem === item} />
+            ))}
           </div>
 
           {/* NUTRITION FACTS */}
-          <div className="NutritionFacts nutrition-facts">{/* YOUR CODE HERE */}</div>
+          <div className="NutritionFacts nutrition-facts">{selectedMenuItem !== 0 && <NutritionalLabel item={selectedMenuItem} />}</div>
         </div>
 
         <div className="data-sources">
